@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.vlath.keyboard.CustomKeyboard
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/keyboard"
+    android:layout_alignParentBottom="true"
+    android:paddingTop="0dp"
+    android:layout_marginTop="20dp"
+    android:layout_width="match_parent"
+    android:keyPreviewLayout="@null"
+    android:layout_height="wrap_content"
+    android:keyBackground="@drawable/key_background"
+    android:popupLayout="@layout/preview"
+    android:keyPreviewOffset="5dp"
+    android:keyTextColor="@color/text"
+    android:shadowColor="@android:color/transparent"
+    android:shadowRadius="0.0"
+    android:background="@color/black"
+    >
+    </com.vlath.keyboard.CustomKeyboard>
