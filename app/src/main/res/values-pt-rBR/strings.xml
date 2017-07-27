@@ -2,9 +2,9 @@
     <string name="app_name">Teclado BeHe</string>
     <string name="subtype_generic">%s</string>
     <string name="welcome">Bem-vindo ao Teclado BeHe!</string>
-    <string name="activate">Please click the enable button below to navigate to keyboard settings. Find BeHe Keyboard in the list and enable it. A warning dialog will appear, click ok. BeHe Keyboard does NOT collect any data. Then, navigate back and click the select button below and choose BeHe Keyboard from the list. After that you can test the keyboard using the text field below. To open the settings, tap the button below and click on BeHe Keyboard.</string>
-    <string name="donate">If you like the app, please consider supporting me. Thanks!</string>
-    <string name="up">Stay up to date</string>
-    <string name="follow">Follow me on Twitter to find news about my apps. @VlathXDA</string>
-    <string name="version">Version 1.0.0b</string>
+    <string name="activate">Por favor, clique no botão \"Ativar\" abaixo para navegar até as configurações do teclado. Encontre o teclado BeHe na lista e habilite-o. Uma aviso aparecerá, clique em OK. O Teclado BeHe NÃO coleta nenhum dado. Em seguida, navegue de volta,  clique no botão \"Selecionar\" abaixo e escolha o Teclado BeHe na lista. Depois disso, você pode testar o teclado usando o campo de texto abaixo. Para abrir as configurações, toque no botão abaixo e clique em Teclado BeHe.</string>
+    <string name="donate">Se você gosta do aplicativo, considere me apoiar. Obrigado!</string>
+    <string name="up">Mantenha-se atualizado</string>
+    <string name="follow">Siga-me no Twitter para encontrar novidade sobre meus aplicativos. @VlathXDA</string>
+    <string name="version">Versão 1.0.0b</string>
 </resources>
