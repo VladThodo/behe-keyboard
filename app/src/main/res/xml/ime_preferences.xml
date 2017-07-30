@@ -26,8 +26,17 @@
         android:defaultValue="1"
         android:entries="@array/start"/>
 
-    <SwitchPreference android:title="Auto capitalization"
+    <SwitchPreference android:title="@string/caps"
         android:key="caps"
         android:defaultValue="true" />
+
+    <SwitchPreference android:title="@string/vib"
+        android:key="vib"
+        android:defaultValue="false" />
+
+    <SwitchPreference android:title="@string/borders"
+        android:key="bord"
+        android:defaultValue="false" />
+
 
 </PreferenceScreen>

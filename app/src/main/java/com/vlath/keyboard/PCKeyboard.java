@@ -11,6 +11,7 @@ import android.graphics.Paint;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.InputType;
@@ -103,7 +104,13 @@ public class PCKeyboard extends InputMethodService
     long shift_pressed=0;
     @Override
     public void onPress(int primaryCode) {
+       if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("vib", false)) {
+           Vibrator v = (Vibrator) getBaseContext().getSystemService(Context.VIBRATOR_SERVICE);
+           v.vibrate(40);
+       }
+
     }
+
 
     @Override
     public void onRelease(int primaryCode) {
@@ -138,7 +145,12 @@ public class PCKeyboard extends InputMethodService
         symbolsKeyboard = new Keyboard(this, R.xml.symbols);
         numKeyboard = new Keyboard(this, R.xml.numbers);
         mSymShiftKeyboard = new Keyboard(this, R.xml.symbols2);
-        kv = (CustomKeyboard) getLayoutInflater().inflate(R.layout.keyboard, null);
+       if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("bord",false)){
+           kv = (CustomKeyboard) getLayoutInflater().inflate(R.layout.keyboard_key_back, null);
+       }
+       else {
+           kv = (CustomKeyboard) getLayoutInflater().inflate(R.layout.keyboard, null);
+       }
     }
 
     @Override
@@ -168,6 +180,7 @@ public class PCKeyboard extends InputMethodService
     @Override
     public void onKey(int primaryCode, int[] keyCodes) {
         InputConnection ic = getCurrentInputConnection();
+
 
         /** Here we handle the key events. */
 
@@ -420,7 +433,12 @@ public class PCKeyboard extends InputMethodService
          * Although, this needs better handling.
          * */
 
-        kv = (CustomKeyboard) getLayoutInflater().inflate(R.layout.keyboard, null);
+        if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("bord",false)){
+            kv = (CustomKeyboard) getLayoutInflater().inflate(R.layout.keyboard_key_back, null);
+        }
+        else {
+            kv = (CustomKeyboard) getLayoutInflater().inflate(R.layout.keyboard, null);
+        }
         setInputType();
         setTheme();
         Paint mPaint = new Paint();

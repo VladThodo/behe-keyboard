@@ -17,6 +17,7 @@ import android.graphics.Paint;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.Keyboard.Key;
 import android.inputmethodservice.KeyboardView;
+import android.os.Vibrator;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -40,7 +41,6 @@ public class CustomKeyboard extends KeyboardView {
 
     @Override
     protected boolean onLongPress(Key key) {
-        super.onLongPress(key);
         if (key.codes[0] == Keyboard.KEYCODE_CANCEL) {
             getOnKeyboardActionListener().onKey(KEYCODE_OPTIONS, null);
             return true;
@@ -56,8 +56,7 @@ public class CustomKeyboard extends KeyboardView {
             return true;
         }
 
-        return true;
-
+        return super.onLongPress(key);
     }
 
 
