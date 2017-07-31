@@ -19,6 +19,7 @@
         <item name="5">5</item>
         <item name="6">6</item>
         <item name="7">7</item>
+        <item name="7">8</item>
     </string-array>
 
     <string-array name="color" translatable="false">
@@ -29,6 +30,7 @@
         <item name="5">Red - white text</item>
         <item name="6">Red - black text</item>
         <item name="7">Orange - white text</item>
+        <item name="7">Material Dark - white text</item>
     </string-array>
 
     <string-array name="start" translatable="false">
