@@ -20,10 +20,13 @@ import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -102,6 +105,11 @@ public class PCKeyboard extends InputMethodService
     private InputMethodManager mServ;
     private float[] mDefaultFilter;
     long shift_pressed=0;
+
+
+    private float x1,x2;
+    static final int MIN_DISTANCE = 150;
+
     @Override
     public void onPress(int primaryCode) {
        if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("vib", false)) {
@@ -448,7 +456,48 @@ public class PCKeyboard extends InputMethodService
         kv.setKeyboard(currentKeyboard);
         capsOnFirst();
         kv.setOnKeyboardActionListener(this);
-        setInputView(kv);
+        final LinearLayout l = new LinearLayout(kv.getContext());
+        kv.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v,MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        x1 = event.getX();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        x2 = event.getX();
+                        float deltaX = x2 - x1;
+
+                        if (Math.abs(deltaX) > MIN_DISTANCE) {
+                            // Left to Right swipe action
+                            if (x2 > x1) {
+                               Log.d("SWR","Right Swipe");
+                               kv.setKeyboard(new Keyboard(kv.getContext(),R.xml.arrow_keys));
+                               kv.animate().translationX(10.0f);
+                               l.animate().alpha(0.0f).setDuration(10000);
+                               return true;
+                            }
+
+                            // Right to left swipe action
+                            else {
+                               Log.d("SWL","Left swipe");
+                               kv.draw(new Canvas());
+                               return true;
+                            }
+
+                        } else {
+                            return false;
+                        }
+
+                }
+                return false;
+            }
+
+        });
+        l.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        l.addView(kv);
+        setInputView(l);
     }
 
     @Override
