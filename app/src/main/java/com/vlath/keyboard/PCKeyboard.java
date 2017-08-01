@@ -91,6 +91,14 @@ public class PCKeyboard extends InputMethodService
             0, 0, 1.0f, 0, 39, // blue
             0, 0, 0, 1.0f, 0 // alpha
     };
+
+    private static final float[] sMaterialDarkColorArray = {
+      1.0f, 0, 0, 0, 55, // red
+      0, 1.0f, 0, 0, 71, // green
+      0, 0, 1.0f, 0, 79, // blue
+      0, 0, 0, 1.0f, 1 // alpha
+    };
+
     private KeyboardView kv;
     private Keyboard qwertyKeyboard;
     private Keyboard symbolsKeyboard;
@@ -768,6 +776,9 @@ public class PCKeyboard extends InputMethodService
                 break;
             case "7":
                 mDefaultFilter = sOrangeBlackColorArray;
+                break;
+            case "8":
+                mDefaultFilter = sMaterialDarkColorArray;
                 break;
 
         }
