@@ -6,7 +6,10 @@
     <string name="donate">Se você gosta do aplicativo, considere me apoiar. Obrigado!</string>
     <string name="up">Mantenha-se atualizado</string>
     <string name="follow">Siga-me no Twitter para encontrar novidade sobre meus aplicativos. @VlathXDA</string>
-    <string name="version">Versão 1.0.0b</string>
+    
+    <!-- Should be unstranslatable -->
+    <string name="version">Versão 1.0.2</string>
+    
     <string name="caps">Auto capitalização</string>
     <string name="vib">Vibrar ao pressionar uma tecla</string>
     <string name="borders">Bordas do teclado</string>
