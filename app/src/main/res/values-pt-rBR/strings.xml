@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Teclado BeHe</string>
+    <string name="subtype_generic">%s</string>
+    <string name="welcome">Bem-vindo ao Teclado BeHe!</string>
+    <string name="activate">Por favor, clique no botão \"Ativar\" abaixo para navegar até as configurações do teclado. Encontre o teclado BeHe na lista e habilite-o. Uma aviso aparecerá, clique em OK. O Teclado BeHe NÃO coleta nenhum dado. Em seguida, navegue de volta,  clique no botão \"Selecionar\" abaixo e escolha o Teclado BeHe na lista. Depois disso, você pode testar o teclado usando o campo de texto abaixo. Para abrir as configurações, toque no botão abaixo e clique em Teclado BeHe.</string>
+    <string name="donate">Se você gosta do aplicativo, considere me apoiar. Obrigado!</string>
+    <string name="up">Mantenha-se atualizado</string>
+    <string name="follow">Siga-me no Twitter para encontrar novidade sobre meus aplicativos. @VlathXDA</string>
+    
+    <!-- Should be unstranslatable -->
+    <string name="version">Versão 1.0.2</string>
+    
+    <string name="caps">Auto capitalização</string>
+    <string name="vib">Vibrar ao pressionar uma tecla</string>
+    <string name="borders">Bordas do teclado</string>
+    
+    <string-array name="color_values">
+        <item name="1">1</item>
+        <item name="2">2</item>
+        <item name="3">3</item>
+        <item name="4">4</item>
+        <item name="5">5</item>
+        <item name="6">6</item>
+        <item name="7">7</item>
+        <item name="7">8</item>
+    </string-array>
+
+    <string-array name="color">
+        <item name="1">Preto - texto branco</item>
+        <item name="2">Branco - texto preto</item>
+        <item name="3">Azul - texto branco</item>
+        <item name="4">Azul - black text</item>
+        <item name="5">Vermelho - texto branco</item>
+        <item name="6">Vermelho - texto preto</item>
+        <item name="7">Laranja - texto branco</item>
+        <item name="7">Material Escuro - texto branco</item>
+    </string-array>
+
+    <string-array name="start">
+        <item name="1">QWERTY</item>
+        <item name="2">Teclas de seta</item>
+        <item name="3">Programação</item>
+    </string-array>
+    
+    <string-array name="start_values" translatable="false">
+        <item name="1">1</item>
+        <item name="2">2</item>
+        <item name="3">3</item>
+    </string-array>
+
+</resources>
