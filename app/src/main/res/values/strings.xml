@@ -6,7 +6,7 @@
     <string name="donate">If you like the app, please consider supporting me. Thanks!</string>
     <string name="up">Stay up to date</string>
     <string name="follow">Follow me on Twitter to find news about my apps. @VlathXDA</string>
-    <string name="version">Version 1.0.2</string>
+    <string name="version">Version 1.0.3</string>
     <string name="caps">Auto capitalization</string>
     <string name="vib">Vibrate on keypress</string>
     <string name="borders">Key borders</string>
@@ -44,5 +44,5 @@
         <item name="2">2</item>
         <item name="3">3</item>
     </string-array>
-    <string name="word_separators">\u0020.,;:!?\n()[]*&amp;@{}/&lt;&gt;_+=|&quot;</string>
+    <string name="word_separators" translatable="false">\u0020.,;:!?\n()[]*&amp;@{}/&lt;&gt;_+=|&quot;</string>
 </resources>
