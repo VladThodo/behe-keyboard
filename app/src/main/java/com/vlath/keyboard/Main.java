@@ -63,8 +63,7 @@ public class Main extends AppCompatActivity {
     }
 
     public void sett(View v){
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.setClassName("com.android.settings", "com.android.settings.LanguageSettings");
+        Intent intent = new Intent(this, Preference.class);
         startActivity(intent);
     }
 

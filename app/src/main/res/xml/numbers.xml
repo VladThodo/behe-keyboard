@@ -73,5 +73,6 @@
             android:keyEdgeFlags="right"
             android:keyWidth="50%p"
             />
+        <Key android:codes="10"   android:keyWidth="15%p"  android:keyIcon="@drawable/ic_keyboard_return" android:keyEdgeFlags="right"/>
     </Row>
 </Keyboard>

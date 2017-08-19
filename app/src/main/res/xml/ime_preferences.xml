@@ -38,5 +38,17 @@
         android:key="bord"
         android:defaultValue="false" />
 
+    <SwitchPreference android:title="@string/prediction"
+        android:key="pred"
+        android:defaultValue="false" />
+
+    <SwitchPreference android:title="Arrow keys on qwerty layout"
+        android:key="arr_qrt"
+        android:defaultValue="false" />
+
+    <SwitchPreference android:title="Number keys on qwerty layout"
+        android:key="nbr_qrt"
+        android:defaultValue="false" />
+
 
 </PreferenceScreen>

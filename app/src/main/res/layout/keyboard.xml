@@ -14,6 +14,5 @@
     android:keyTextColor="@color/text"
     android:shadowColor="@android:color/transparent"
     android:shadowRadius="0.0"
-    android:background="@color/black"
-    >
+    android:background="@color/black">
     </com.vlath.keyboard.CustomKeyboard>

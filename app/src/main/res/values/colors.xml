@@ -16,4 +16,8 @@
     <color name="gray">#424242</color>
     <color name="gray_dark">#212121</color>
     <color name="text">#a5a7aa</color>
+    <color name="candidate_normal">#FF000000</color>
+    <color name="candidate_recommended">#000000</color>
+    <color name="candidate_other">#ff808080</color>
+    <color name="candidate_background">#bbffffff</color>
 </resources>

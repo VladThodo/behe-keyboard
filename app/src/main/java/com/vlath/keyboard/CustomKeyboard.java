@@ -5,6 +5,7 @@ package com.vlath.keyboard;
  */
 
 import android.graphics.Bitmap;
+import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
@@ -21,8 +22,11 @@ import android.os.Vibrator;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.inputmethod.InputMethodSubtype;
+import android.widget.PopupWindow;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 public class CustomKeyboard extends KeyboardView {
@@ -34,6 +38,7 @@ public class CustomKeyboard extends KeyboardView {
     public CustomKeyboard(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
+
 
     public CustomKeyboard(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -119,4 +124,29 @@ public class CustomKeyboard extends KeyboardView {
             }
         }
     }
+   public PopupWindow getPreview(){
+       try {
+           Field field = KeyboardView.class.getDeclaredField("mPreviewPopup");
+           field.setAccessible(true);
+           Object value = field.get(this);
+           field.setAccessible(false);
+
+           if (value == null) {
+               return null;
+           } else if (KeyboardView.class.isAssignableFrom(value.getClass())) {
+               return (PopupWindow) value;
+           }
+           throw new RuntimeException("Wrong value");
+       } catch (NoSuchFieldException e) {
+           throw new RuntimeException(e);
+       } catch (IllegalAccessException e) {
+           throw new RuntimeException(e);
+       }
+   }
+
+   public void setPopupTheme(ColorMatrixColorFilter filter){
+       Paint p = new Paint();
+       p.setColorFilter(filter);
+       getPreview().getContentView().setLayerType(LAYER_TYPE_HARDWARE, p);
+   }
 }

@@ -10,6 +10,7 @@
     <string name="caps">Auto capitalization</string>
     <string name="vib">Vibrate on keypress</string>
     <string name="borders">Key borders</string>
+    <string name="prediction">Enable text prediction</string>
 
     <string-array name="color_values" translatable="false">
         <item name="1">1</item>
@@ -43,4 +44,5 @@
         <item name="2">2</item>
         <item name="3">3</item>
     </string-array>
+    <string name="word_separators">\u0020.,;:!?\n()[]*&amp;@{}/&lt;&gt;_+=|&quot;</string>
 </resources>
