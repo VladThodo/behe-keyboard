@@ -12,7 +12,7 @@
     <string name="borders">Key borders</string>
     <string name="prediction">Enable text prediction</string>
 
-    <string-array name="color_values" translatable="false">
+    <string-array name="color_values">
         <item name="1">1</item>
         <item name="2">2</item>
         <item name="3">3</item>
@@ -23,7 +23,7 @@
         <item name="7">8</item>
     </string-array>
 
-    <string-array name="color" translatable="false">
+    <string-array name="color">
         <item name="1">Black - white text</item>
         <item name="2">White - black text</item>
         <item name="3">Blue - white text</item>
@@ -34,12 +34,12 @@
         <item name="7">Material Dark - white text</item>
     </string-array>
 
-    <string-array name="start" translatable="false">
+    <string-array name="start">
     <item name="1">QWERTY</item>
     <item name="2">Arrow Keys</item>
     <item name="3">Programming</item>
     </string-array>
-    <string-array name="start_values" translatable="false">
+    <string-array name="start_values">
         <item name="1">1</item>
         <item name="2">2</item>
         <item name="3">3</item>
