@@ -10,7 +10,7 @@
     <string name="caps">Auto capitalization</string>
     <string name="vib">Vibrate on keypress</string>
     <string name="borders">Key borders</string>
-    <string name="prediction">Enable text prediction</string>
+    <string name="prediction" translatable="false" >Enable text prediction</string>
 
     <string-array name="color_values">
         <item name="1">1</item>
