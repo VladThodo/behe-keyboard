@@ -54,7 +54,7 @@
         <Key android:codes="32"   android:isRepeatable="true" android:keyLabel="SPACE"
              android:keyWidth="46.154%p"/>
         <Key android:codes="46" android:keyLabel="."/>
-        <Key android:codes="-4"   android:keyWidth="15%p"  android:keyIcon="@drawable/ic_keyboard_return" android:keyEdgeFlags="right"/>
+        <Key android:codes="10"   android:keyWidth="15%p"  android:keyIcon="@drawable/ic_keyboard_return" android:keyEdgeFlags="right"/>
 
     </Row>
 

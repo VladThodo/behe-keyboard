@@ -6,9 +6,9 @@
     <string name="donate">If you like the app, please consider supporting me. Thanks!</string>
     <string name="up">Stay up to date</string>
     <string name="follow">Follow me on Twitter to find news about my apps. @VlathXDA</string>
-    <string name="version">Version 1.0.3</string>
+    <string name="version">Version 1.0.4</string>
     <string name="caps">Auto capitalization</string>
-    <string name="vib">Vibrate on keypress</string>
+    <string name="vib">Vibrate on key press</string>
     <string name="borders">Key borders</string>
     <string name="prediction" translatable="false" >Enable text prediction</string>
 

@@ -7,8 +7,8 @@ android {
         applicationId "com.vlath.keyboard"
         minSdkVersion 18
         targetSdkVersion 26
-        versionCode 104
-        versionName "1.0.3"
+        versionCode 105
+        versionName "1.0.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

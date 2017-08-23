@@ -1080,8 +1080,8 @@ public class PCKeyboard extends InputMethodService
                     currentKeyboard = new LatinKeyboard(this, R.xml.symbols);
                     kv.setKeyboard(currentKeyboard);
                 } else {
-                    isSysmbols = !isSysmbols;
-                    currentKeyboard = new LatinKeyboard(this, R.xml.qwerty);
+                    isSysmbols = false;
+                    currentKeyboard = new LatinKeyboard(this, qwertyKeyboardID);
                     kv.setKeyboard(currentKeyboard);
                 }
                 break;
@@ -1093,7 +1093,7 @@ public class PCKeyboard extends InputMethodService
 
                 if (isDpad || isProgramming) {
                     if (isProgramming) {
-                        currentKeyboard = new LatinKeyboard(this, R.xml.qwerty);
+                        currentKeyboard = new LatinKeyboard(this, qwertyKeyboardID);
                         kv.invalidateAllKeys();
                         kv.setKeyboard(currentKeyboard);
                         isProgramming = false;
@@ -1119,10 +1119,12 @@ public class PCKeyboard extends InputMethodService
 
                 // TODO: declare custom code in the CustomKeyboard class
 
-                getCurrentInputConnection().sendKeyEvent(
-                        new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DPAD_LEFT));
-                getCurrentInputConnection().sendKeyEvent(
-                        new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DPAD_LEFT));
+
+                    getCurrentInputConnection().sendKeyEvent(
+                            new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DPAD_LEFT));
+                    getCurrentInputConnection().sendKeyEvent(
+                            new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DPAD_LEFT));
+
                 break;
 
             case -111:
@@ -1191,7 +1193,7 @@ public class PCKeyboard extends InputMethodService
 
                 // TODO: declare custom code in the CustomKeyboard class
 
-                currentKeyboard = new LatinKeyboard(getBaseContext(), R.xml.qwerty);
+                currentKeyboard = new LatinKeyboard(getBaseContext(), qwertyKeyboardID);
                 kv.setKeyboard(currentKeyboard);
                 isDpad = false;
                 break;
