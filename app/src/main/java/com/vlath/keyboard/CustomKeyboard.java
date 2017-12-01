@@ -31,9 +31,6 @@ import java.util.List;
 
 public class CustomKeyboard extends KeyboardView {
 
-    static final int KEYCODE_OPTIONS = -100;
-    // TODO: Move this into android.inputmethodservice.Keyboard
-    static final int KEYCODE_LANGUAGE_SWITCH = -101;
 
     public CustomKeyboard(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -47,7 +44,7 @@ public class CustomKeyboard extends KeyboardView {
     @Override
     protected boolean onLongPress(Key key) {
         if (key.codes[0] == Keyboard.KEYCODE_CANCEL) {
-            getOnKeyboardActionListener().onKey(KEYCODE_OPTIONS, null);
+            getOnKeyboardActionListener().onKey(LatinKeyboard.KEYCODE_OPTIONS, null);
             return true;
         }
         if(key.codes[0] == -113) {
@@ -71,6 +68,8 @@ public class CustomKeyboard extends KeyboardView {
         //keyboard.setSpaceIcon(getResources().getDrawable(subtype.getIconResId()));
         invalidateAllKeys();
     }
+
+
 
     @Override
     public void onDraw(Canvas canvas) {
@@ -124,6 +123,11 @@ public class CustomKeyboard extends KeyboardView {
             }
         }
     }
+   public LatinKeyboard getLatinKeyboard(){
+
+        return (LatinKeyboard)getKeyboard();
+
+   }
    public PopupWindow getPreview(){
        try {
            Field field = KeyboardView.class.getDeclaredField("mPreviewPopup");

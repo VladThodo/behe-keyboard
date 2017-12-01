@@ -23,22 +23,18 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.os.IBinder;
 import android.os.Vibrator;
 import android.preference.*;
-import android.support.v4.content.ContextCompat;
 import android.text.InputType;
 import android.text.method.MetaKeyKeyListener;
 import android.util.Log;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.CompletionInfo;
 import android.view.inputmethod.EditorInfo;
@@ -50,12 +46,7 @@ import android.view.textservice.SpellCheckerSession;
 import android.view.textservice.SuggestionsInfo;
 import android.view.textservice.TextInfo;
 import android.view.textservice.TextServicesManager;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.PopupWindow;
-import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -158,7 +149,7 @@ public class PCKeyboard extends InputMethodService
     private float[] mDefaultFilter;
     long shift_pressed=0;
 
-
+    private short rowNumber = 4;
     private CustomKeyboard kv;
 
     private LatinKeyboard currentKeyboard;
@@ -282,7 +273,10 @@ public class PCKeyboard extends InputMethodService
         mCandidateView.setService(this);
 
         kv.setLayerType(View.LAYER_TYPE_HARDWARE, mPaint);
+        currentKeyboard.setRowNumber(getRowNumber());
+
         kv.setKeyboard(currentKeyboard);
+
         capsOnFirst();
         kv.setOnKeyboardActionListener(this);
 
@@ -292,7 +286,7 @@ public class PCKeyboard extends InputMethodService
         mCandidateView.setLayerType(View.LAYER_TYPE_HARDWARE, mPaint);
 
         setInputView(kv);
-
+        kv.getLatinKeyboard().changeKeyHeight(getHeightKeyModifier());
 
         setCandidatesView(mCandidateView);
 
@@ -619,9 +613,14 @@ public class PCKeyboard extends InputMethodService
         return mWordSeparators;
     }
 
-    public boolean isWordSeparator(int code) {
-        String separators = getWordSeparators();
-        return separators.contains(String.valueOf((char)code));
+    public boolean isWordSeparator(String s) {
+
+       if(s.contains(". ") || s.contains("? ") || s.contains("! ")){
+           return true;
+       }
+
+       return false;
+
     }
 
     public void pickDefaultCandidate() {
@@ -955,9 +954,13 @@ public class PCKeyboard extends InputMethodService
                 break;
             case "2":
                 currentKeyboard = new LatinKeyboard(this, R.xml.arrow_keys);
+                setRowNumber(4);
+                currentKeyboard.setRowNumber(getRowNumber());
                 break;
             case "3":
                 currentKeyboard = new LatinKeyboard(this, R.xml.programming);
+                setRowNumber(5);
+                currentKeyboard.setRowNumber(getRowNumber());
                 break;
         }
     }
@@ -1084,24 +1087,29 @@ public class PCKeyboard extends InputMethodService
                     currentKeyboard = new LatinKeyboard(this, qwertyKeyboardID);
                     kv.setKeyboard(currentKeyboard);
                 }
+                kv.getLatinKeyboard().changeKeyHeight(getHeightKeyModifier());
                 break;
 
-            case CustomKeyboard.KEYCODE_LANGUAGE_SWITCH:
+            case LatinKeyboard.KEYCODE_LAYUOUT_SWITCH:
 
-                /** Language Switch is a custom value defined in the CustomKeyboard class.
+                /** Language Switch is a custom value defined in the LatinKeyboard class.
                  * We use it to switch between qwerty/arrow keys/programming layouts. */
 
                 if (isDpad || isProgramming) {
                     if (isProgramming) {
                         currentKeyboard = new LatinKeyboard(this, qwertyKeyboardID);
                         kv.invalidateAllKeys();
+                        currentKeyboard.setRowNumber(getQwertyRowNumber());
                         kv.setKeyboard(currentKeyboard);
                         isProgramming = false;
+                        isDpad = false;
                     }
 
                     if (isDpad) {
                         currentKeyboard = new LatinKeyboard(this, R.xml.programming);
                         kv.invalidateAllKeys();
+                        setRowNumber(5);
+                        currentKeyboard.setRowNumber(getRowNumber());
                         kv.setKeyboard(currentKeyboard);
                         isDpad = false;
                         isProgramming = true;
@@ -1109,15 +1117,17 @@ public class PCKeyboard extends InputMethodService
                 } else {
                     currentKeyboard = new LatinKeyboard(this, R.xml.arrow_keys);
                     kv.invalidateAllKeys();
+                    setRowNumber(4);
+                    currentKeyboard.setRowNumber(getRowNumber());
                     kv.setKeyboard(currentKeyboard);
                     isDpad = true;
                 }
+                kv.getLatinKeyboard().changeKeyHeight(getHeightKeyModifier());
                 break;
-            case -108:
+            case LatinKeyboard.KEYCODE_DPAD_L:
 
                 /** Another custom keycode. */
 
-                // TODO: declare custom code in the CustomKeyboard class
 
 
                     getCurrentInputConnection().sendKeyEvent(
@@ -1127,45 +1137,36 @@ public class PCKeyboard extends InputMethodService
 
                 break;
 
-            case -111:
-
-                // TODO: declare custom code in the CustomKeyboard class
+            case LatinKeyboard.KEYCODE_DPAD_R:
 
                 getCurrentInputConnection().sendKeyEvent(
                         new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DPAD_RIGHT));
                 getCurrentInputConnection().sendKeyEvent(
                         new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DPAD_RIGHT));
                 break;
-            case -107:
-
-                // TODO: declare custom code in the CustomKeyboard class
+            case LatinKeyboard.KEYCODE_DPAD_U:
 
                 getCurrentInputConnection().sendKeyEvent(
                         new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DPAD_UP));
                 getCurrentInputConnection().sendKeyEvent(
                         new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DPAD_UP));
                 break;
-            case -109:
-
-                // TODO: declare custom code in the CustomKeyboard class
+            case LatinKeyboard.KEYCODE_DPAD_DO:
 
                 getCurrentInputConnection().sendKeyEvent(
                         new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DPAD_DOWN));
                 getCurrentInputConnection().sendKeyEvent(
                         new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DPAD_DOWN));
                 break;
-            case -112:
+            case LatinKeyboard.KEYCODE_ESCAPE:
 
-                // TODO: declare custom code in the CustomKeyboard class
 
                 getCurrentInputConnection().sendKeyEvent(
                         new KeyEvent(100, 100, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ESCAPE, 0));
                 getCurrentInputConnection().sendKeyEvent(
                         new KeyEvent(100, 100, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_ESCAPE, 0));
                 break;
-            case -113:
-
-                // TODO: declare custom code in the CustomKeyboard class
+            case LatinKeyboard.KEYCODE_CTRL:
 
                 if (Variables.isCtrl()) {
                     Variables.setCtrlOff();
@@ -1175,9 +1176,7 @@ public class PCKeyboard extends InputMethodService
                     kv.draw(new Canvas());
                 }
                 break;
-            case -114:
-
-                // TODO: declare custom code in the CustomKeyboard class
+            case LatinKeyboard.KEYCODE_ALT:
 
                 if (Variables.isAlt()) {
                     Variables.setAltOff();
@@ -1187,17 +1186,15 @@ public class PCKeyboard extends InputMethodService
                     kv.draw(new Canvas());
                 }
                 break;
-            case -117:
+            case LatinKeyboard.KEYCODE_QWERTY_SWITCH:
 
                 /** This key enables the user to switch rapidly between qwerty/arrow keys layouts.*/
-
-                // TODO: declare custom code in the CustomKeyboard class
 
                 currentKeyboard = new LatinKeyboard(getBaseContext(), qwertyKeyboardID);
                 kv.setKeyboard(currentKeyboard);
                 isDpad = false;
                 break;
-            case -121:
+            case LatinKeyboard.KEYCODE_DELL_PROCESS:
                 /** Procces DEL key*/
 
                 if(Variables.isAnyOn()){
@@ -1216,7 +1213,8 @@ public class PCKeyboard extends InputMethodService
                     getCurrentInputConnection().sendKeyEvent(new KeyEvent(100, 100, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL, 0));
                 }
                 break;
-            case -122:
+            case LatinKeyboard.KEYCODE_I_DONT_KNOW_WHY_I_PUT_THAT_HERE:
+
                 if(Variables.isAnyOn()){
                     if(Variables.isCtrl() && Variables.isAlt()) {
                         getCurrentInputConnection().sendKeyEvent(new KeyEvent(100, 100, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB, 0, KeyEvent.META_CTRL_ON | KeyEvent.META_ALT_ON));
@@ -1232,6 +1230,7 @@ public class PCKeyboard extends InputMethodService
                     getCurrentInputConnection().sendKeyEvent(new KeyEvent(100, 100, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB , 0));
                     getCurrentInputConnection().sendKeyEvent(new KeyEvent(100, 100, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_TAB, 0));
                 }
+
                 break;
             default:
 
@@ -1245,9 +1244,8 @@ public class PCKeyboard extends InputMethodService
 
             /** Some text processing. Helps some guys improve their writing skills, huh*/
 
-            //TODO: Handle this better
             if(PreferenceManager.getDefaultSharedPreferences(this).getBoolean("caps",true)) {
-                if (ic.getTextBeforeCursor(2, 0).toString().contains(". ")) {
+                if (isWordSeparator(ic.getTextBeforeCursor(2, 0).toString())) {
                     setCapsOn(true);
                     firstCaps = true;
                 }
@@ -1256,20 +1254,58 @@ public class PCKeyboard extends InputMethodService
         }
     }
 
+    public short getRowNumber(){
+
+        return rowNumber;
+
+    }
+    public void setRowNumber(int number){
+
+        rowNumber = (short) number;
+    }
+    public short getQwertyRowNumber(){
+
+        if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("arr_qrt", false) && PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("nbr_qrt", false)){
+            return 5;
+        }
+        else{
+            if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("arr_qrt", false)){
+                return 4;
+            }
+            else if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("nbr_qrt", false)){
+                return 5;
+            }
+            else {
+                 return 4;
+            }
+        }
+
+    }
     public void setQwertyKeyboard(){
         if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("arr_qrt", false) && PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("nbr_qrt", false)){
             qwertyKeyboardID = R.xml.qwerty_arrow_numbers;
+            setRowNumber(5);
         }
         else{
             if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("arr_qrt", false)){
                 qwertyKeyboardID = R.xml.qwerty_arrows;
+                setRowNumber(4);
             }
             else if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("nbr_qrt", false)){
                 qwertyKeyboardID = R.xml.qwerty_numbers;
+                setRowNumber(5);
             }
             else {
                 qwertyKeyboardID = R.xml.qwerty;
+                setRowNumber(4);
             }
         }
+    }
+    public double getHeightKeyModifier() {
+
+        double x = (double)PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("height", 50) / (double)50;
+
+        return x;
+
     }
 }

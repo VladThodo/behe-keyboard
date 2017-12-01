@@ -14,8 +14,35 @@ import android.view.inputmethod.InputMethodManager;
 
 public class LatinKeyboard extends Keyboard {
 
+    static final int KEYCODE_OPTIONS = -100;
+
+    static final int KEYCODE_LAYUOUT_SWITCH = -101;
+
+    static final int KEYCODE_DPAD_R = -111;
+
+    static final int KEYCODE_DPAD_L = -108;
+
+    static final int KEYCODE_DPAD_U = -107;
+
+    static final int KEYCODE_DPAD_DO = -109;
+
+    static final int KEYCODE_ESCAPE = -112;
+
+    static final int KEYCODE_CTRL = -113;
+
+    static final int KEYCODE_ALT  = -114;
+
+    static final int KEYCODE_QWERTY_SWITCH = -117;
+
+    static final int KEYCODE_DELL_PROCESS = -121;
+
+    static final int KEYCODE_I_DONT_KNOW_WHY_I_PUT_THAT_HERE = -122;
+
+
     private Key mEnterKey;
     private Key mSpaceKey;
+    private static short rowNumber = 4;
+
     /**
      * Stores the current state of the mode change key. Its width will be dynamically updated to
      * match the region of {@link #mModeChangeKey} when {@link #mModeChangeKey} becomes invisible.
@@ -60,7 +87,7 @@ public class LatinKeyboard extends Keyboard {
         } else if (key.codes[0] == Keyboard.KEYCODE_MODE_CHANGE) {
             mModeChangeKey = key;
             mSavedModeChangeKey = new LatinKey(res, parent, x, y, parser);
-        } else if (key.codes[0] == CustomKeyboard.KEYCODE_LANGUAGE_SWITCH) {
+        } else if (key.codes[0] == LatinKeyboard.KEYCODE_LAYUOUT_SWITCH) {
             mLanguageSwitchKey = key;
             mSavedLanguageSwitchKey = new LatinKey(res, parent, x, y, parser);
         }
@@ -126,11 +153,46 @@ public class LatinKeyboard extends Keyboard {
         }
     }
 
+    public void setRowNumber(short number){
+
+        rowNumber = number;
+
+    }
+
+
+
     void setSpaceIcon(final Drawable icon) {
         if (mSpaceKey != null) {
             mSpaceKey.icon = icon;
         }
     }
+    public void changeKeyHeight(double height_modifier){
+        int height = 0;
+        for(Keyboard.Key key : getKeys()) {
+            key.height *= height_modifier;
+            key.y *= height_modifier;
+            height = key.height;
+        }
+        setKeyHeight(height);
+        getNearestKeys(0, 0); //somehow adding this fixed a weird bug where bottom row keys could not be pressed if keyboard height is too tall.. from the Keyboard source code seems like calling this will recalculate some values used in keypress detection calculation
+    }
+
+
+    /** This piece of code is intended to help us to resize the keyboard at runtime,
+     *  thus giving us the opportunity to customize its height. It's a bit tricky though.
+     *  And StackOverflow inspired me to be honest.
+     * **/
+
+    @Override
+    public int getHeight(){
+
+        return getKeyHeight() * rowNumber;
+    }
+
+    public void setKeyHeight(int height) {
+        super.setKeyHeight(height);
+    }
+
 
     static class LatinKey extends Keyboard.Key {
 
