@@ -1055,7 +1055,7 @@ public class PCKeyboard extends InputMethodService
                 EditorInfo curEditor = getCurrentInputEditorInfo();
                 switch (curEditor.imeOptions & EditorInfo.IME_MASK_ACTION) {
                     case EditorInfo.IME_ACTION_DONE:
-                        getCurrentInputConnection().performEditorAction(EditorInfo.IME_ACTION_DONE);
+                        keyDownUp(66);
                         break;
                     case EditorInfo.IME_ACTION_GO:
                         getCurrentInputConnection().performEditorAction(EditorInfo.IME_ACTION_GO);
