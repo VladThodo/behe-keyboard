@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BeHe Keyboard</string>
     <string name="subtype_generic">%s</string>
-    <string name="welcome">Welcome to BeHe Keyboard!</string>
+    <string name="welcome">Welcome to BeHe!</string>
     <string name="activate">Please click the enable button below to navigate to keyboard settings. Find BeHe Keyboard in the list and enable it. A warning dialog will appear, click ok. BeHe Keyboard does NOT collect any data. Then, navigate back and click the select button below and choose BeHe Keyboard from the list. After that you can test the keyboard using the text field below. To open the settings, tap the button below and click on BeHe Keyboard.  \n Thanks Matt for the first donation!</string>
     <string name="donate">If you like the app, please consider supporting me. Thanks!</string>
     <string name="up">Stay up to date</string>
@@ -11,6 +11,13 @@
     <string name="vib">Vibrate on key press</string>
     <string name="borders">Key borders</string>
     <string name="prediction" translatable="false" >Enable text prediction</string>
+    <string name="welcome_desc" translatable="false">Enjoy a full-fledged PC keyboard on your android device</string>
+    <string name="multiple_desc" translatable="false">Switch easily between three keyboard faces, all with adjustable height</string>
+    <string name="multiple_title" translatable="false">Multiple faces</string>
+    <string name="open_desc" translatable="false">No spying, no data collecting. All the source code can be found on GitHub</string>
+    <string name="open_title" translatable="false">Open source</string>
+    <string name="free_title" translatable="false">Totally free</string>
+    <string name="free_desc" translatable="false">If you want, you can support me by donating. E-mail me for details</string>
 
     <string-array name="color_values">
         <item name="1">1</item>

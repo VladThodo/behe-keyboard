@@ -1,76 +1,15 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="keyBackColor">@android:color/black</item>
-        <item name="boardBackColor">@android:color/black</item>
-    </style>
-    
-    <style name="Black" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorPrimaryDark">#a5a7aa</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="keyBackColor">@android:color/black</item>
-        <item name="boardBackColor">@android:color/black</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Blue" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#2196F3</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="keyBackColor">#2196F3</item>
-        <item name="boardBackColor">#2196F3</item>
-    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Red" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#F44336</item>
-        <item name="keyBackColor">#F44336</item>
-    </style>
-
-    <style name="Cyan" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#00BCD4</item>
-        <item name="keyBackColor">#00BCD4</item>
-    </style>
-
-    <style name="Teal" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/teal</item>
-        <item name="colorPrimaryDark">@android:color/white</item>
-        <item name="colorAccent">#009688</item>
-        <item name="keyBackColor">@color/teal</item>
-    </style>
-
-    <style name="Amber" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#FFC107</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#FFC107</item>
-        <item name="keyBackColor">#FFC107</item>
-    </style>
-
-    <style name="Lime" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#CDDC39</item>
-        <item name="keyBackColor">#CDDC39</item>
-    </style>
-
-    <style name="Purple" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/purple</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#9C27B0</item>
-        <item name="keyBackColor">@color/purple</item>
-    </style>
-
-    <style name="PreferencesTheme" parent="Theme.AppCompat">
-        <item name="colorPrimary">@color/gray</item>
-        <item name="colorPrimaryDark">@color/gray_dark</item>
-        <item name="android:textColor">#FFF</item>
-        <item name="colorAccent">@color/amber</item>
-    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
