@@ -1,4 +1,5 @@
-<img src="https://travis-ci.org/VladThodo/behe-keyboard.svg?branch=master"></img> [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/VladThodo/behe-keyboard/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/VladThodo/behe-keyboard/?branch=master)
+![Travis](https://img.shields.io/travis/VladThodo/behe-keyboard.svg?style=flat-square)
+![Quality Score](https://img.shields.io/scrutinizer/g/VladThodo/behe-keyboard.svg?style=flat-square)
 
 
 
