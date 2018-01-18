@@ -35,8 +35,8 @@
     </Row>
 
     <Row>
+        <Key android:codes="-101" android:keyIcon="@drawable/ic_more_horiz" android:keyWidth="10%p"/>
         <Key android:codes="-117" android:keyLabel="ABC" android:keyWidth="10%p"/>
-        <Key android:codes="-101" android:keyIcon="@drawable/ic_more_horiz" android:keyWidth="12%p"/>
         <Key android:codes="32"   android:isRepeatable="true" android:keyLabel="SPACE"
              android:keyWidth="46.154%p"/>
         <Key android:codes="46" android:keyLabel="."/>

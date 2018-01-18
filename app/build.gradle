@@ -10,13 +10,14 @@ android {
         applicationId "com.vlath.keyboard"
         minSdkVersion 18
         targetSdkVersion 26
-        versionCode 110
-        versionName "1.1.0"
+        versionCode 112
+        versionName "1.1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

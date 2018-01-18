@@ -2,11 +2,11 @@
     <string name="app_name">BeHe Keyboard</string>
     <string name="subtype_generic">%s</string>
     <string name="welcome">Welcome to BeHe!</string>
-    <string name="activate">Please click the enable button below to navigate to keyboard settings. Find BeHe Keyboard in the list and enable it. A warning dialog will appear, click ok. BeHe Keyboard does NOT collect any data. Then, navigate back and click the select button below and choose BeHe Keyboard from the list. After that you can test the keyboard using the text field below. To open the settings, tap the button below and click on BeHe Keyboard.  \n Thanks Matt for the first donation!</string>
+    <string name="activate">Please click the enable button below to navigate to keyboard settings. Find BeHe Keyboard in the list and enable it. A warning dialog will appear, click ok. BeHe Keyboard does NOT collect any data. Then, navigate back and click the select button below and choose BeHe Keyboard from the list. After that you can test the keyboard using the text field below. To open the settings, tap the button below and click on BeHe Keyboard.  \n\nSpecial thanks to Matt and Thomas for donating!</string>
     <string name="donate">If you like the app, please consider supporting me. Thanks!</string>
     <string name="up">Stay up to date</string>
     <string name="follow">Follow me on Twitter to find news about my apps. @VlathXDA</string>
-    <string name="version" translatable="false">Version 1.1.0</string>
+    <string name="version" translatable="false">Version 1.1.2</string>
     <string name="caps">Auto capitalization</string>
     <string name="vib">Vibrate on key press</string>
     <string name="borders">Key borders</string>
@@ -18,7 +18,8 @@
     <string name="open_title" translatable="false">Open source</string>
     <string name="free_title" translatable="false">Totally free</string>
     <string name="free_desc" translatable="false">If you want, you can support me by donating. E-mail me for details</string>
-
+    <string name="license" translatable="false">BeHe Keyboard is licensed under Apache License 2.0. A copy of the license can be found <a href="https://www.apache.org/licenses/LICENSE-2.0">here.</a> \n\nAlso, the source code is hosted on <a href="https://github.com/VladThodo/behe-keyboard">GitHub.</a> \n\n Got any problems or suggestions? <a href="mailto:vladtodosin@gmail.com?subject=BeHe Keyboard">E-mail me!</a></string>
+    <string name="git" translatable="false">Also, the source code is hosted on <a href="">GitHub</a></string>
     <string-array name="color_values">
         <item name="1">1</item>
         <item name="2">2</item>

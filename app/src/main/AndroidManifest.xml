@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
        <activity android:name=".Preference"/>
+
         <service android:name="com.vlath.keyboard.PCKeyboard"
                  android:label="@string/app_name"
                  android:permission="android.permission.BIND_INPUT_METHOD">

@@ -207,9 +207,7 @@ public class PCKeyboard extends InputMethodService
     }
 
     private void setLatinKeyboard(LatinKeyboard nextKeyboard) {
-        final boolean shouldSupportLanguageSwitchKey =
-                mInputMethodManager.shouldOfferSwitchingToNextInputMethod(getToken());
-   //     nextKeyboard.setLanguageSwitchKeyVisibility(shouldSupportLanguageSwitchKey);
+
         mInputView.setKeyboard(nextKeyboard);
 
     }
@@ -496,6 +494,26 @@ public class PCKeyboard extends InputMethodService
 
     }
 
+    @Override
+    public void swipeLeft() {
+
+    }
+
+    @Override
+    public void swipeRight() {
+
+    }
+
+    @Override
+    public void swipeDown() {
+
+    }
+
+    @Override
+    public void swipeUp() {
+
+    }
+
     /**
      * Update the list of available candidates from the current composing
      * text.  This will need to be filled in by however you are determining
@@ -646,24 +664,6 @@ public class PCKeyboard extends InputMethodService
         }
     }
 
-    public void swipeRight() {
-        keyDownUp(KeyEvent.KEYCODE_DPAD_LEFT);
-
-        if (mCompletionOn || mPredictionOn) {
-            pickDefaultCandidate();
-        }
-    }
-
-    public void swipeLeft() {
-    }
-
-    public void swipeDown() {
-        handleClose();
-    }
-
-    public void swipeUp() {
-    }
-
     public void onPress(int primaryCode) {
         if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("vib", false)) {
             Vibrator v = (Vibrator) getBaseContext().getSystemService(Context.VIBRATOR_SERVICE);
@@ -688,16 +688,16 @@ public class PCKeyboard extends InputMethodService
     public void onGetSuggestions(SuggestionsInfo[] results) {
         final StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < results.length; ++i) {
+        for (SuggestionsInfo result : results) {
             // Returned suggestions are contained in SuggestionsInfo
-            final int len = results[i].getSuggestionsCount();
+            final int len = result.getSuggestionsCount();
             sb.append('\n');
 
             for (int j = 0; j < len; ++j) {
-                sb.append("," + results[i].getSuggestionAt(j));
+                sb.append(",").append(result.getSuggestionAt(j));
             }
 
-            sb.append(" (" + len + ")");
+            sb.append(" (").append(len).append(")");
         }
     }
 
@@ -714,9 +714,7 @@ public class PCKeyboard extends InputMethodService
     public void onGetSentenceSuggestions(SentenceSuggestionsInfo[] results) {
        try {
            final List<String> sb = new ArrayList<>();
-           for (int i = 0; i < results.length; ++i) {
-               final SentenceSuggestionsInfo ssi = results[i];
-
+           for (final SentenceSuggestionsInfo ssi : results) {
                for (int j = 0; j < ssi.getSuggestionsCount(); ++j) {
                    dumpSuggestionsInfoInternal(
                            sb, ssi.getSuggestionsInfoAt(j), ssi.getOffsetAt(j), ssi.getLengthAt(j));
@@ -725,7 +723,7 @@ public class PCKeyboard extends InputMethodService
 
            setSuggestions(sb, true, true);
        }
-       catch(Exception e){}
+       catch(Exception ignored){}
 
     }
     private void setCapsOn(boolean on) {
@@ -1191,7 +1189,9 @@ public class PCKeyboard extends InputMethodService
                 /** This key enables the user to switch rapidly between qwerty/arrow keys layouts.*/
 
                 currentKeyboard = new LatinKeyboard(getBaseContext(), qwertyKeyboardID);
+                currentKeyboard.setRowNumber(getQwertyRowNumber());
                 kv.setKeyboard(currentKeyboard);
+                kv.getLatinKeyboard().changeKeyHeight(getHeightKeyModifier());
                 isDpad = false;
                 break;
             case LatinKeyboard.KEYCODE_DELL_PROCESS:
@@ -1303,9 +1303,6 @@ public class PCKeyboard extends InputMethodService
     }
     public double getHeightKeyModifier() {
 
-        double x = (double)PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("height", 50) / (double)50;
-
-        return x;
-
+        return (double)PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("height", 50) / (double)50;
     }
 }
