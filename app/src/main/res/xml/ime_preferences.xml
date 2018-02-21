@@ -26,6 +26,13 @@
         android:defaultValue="1"
         android:entries="@array/start"/>
 
+    <ListPreference
+        android:title="Layout"
+        android:key="layout"
+        android:entryValues="@array/layout_values"
+        android:defaultValue="1"
+        android:entries="@array/layout"/>
+
     <SwitchPreference android:title="@string/caps"
         android:key="caps"
         android:defaultValue="true" />
@@ -42,11 +49,11 @@
         android:key="pred"
         android:defaultValue="false" />
 
-    <SwitchPreference android:title="Arrow keys on qwerty layout"
+    <SwitchPreference android:title="Arrow keys on standard layout"
         android:key="arr_qrt"
         android:defaultValue="false" />
 
-    <SwitchPreference android:title="Number keys on qwerty layout"
+    <SwitchPreference android:title="Number keys on standard layout"
         android:key="nbr_qrt"
         android:defaultValue="false" />
 
