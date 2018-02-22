@@ -32,7 +32,7 @@ public class LatinKeyboard extends Keyboard {
 
     static final int KEYCODE_ALT  = -114;
 
-    static final int KEYCODE_QWERTY_SWITCH = -117;
+    static final int KEYCODE_STANDARD_SWITCH = -117;
 
     static final int KEYCODE_DELL_PROCESS = -121;
 

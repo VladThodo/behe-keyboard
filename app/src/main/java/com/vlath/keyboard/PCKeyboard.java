@@ -131,7 +131,7 @@ public class PCKeyboard extends InputMethodService
 
     private LatinKeyboard mSymbolsKeyboard;
     private LatinKeyboard mSymbolsShiftedKeyboard;
-    private LatinKeyboard mQwertyKeyboard;
+    private LatinKeyboard mStandardKeyboard;
 
 
 
@@ -154,9 +154,9 @@ public class PCKeyboard extends InputMethodService
 
     private LatinKeyboard currentKeyboard;
     private LatinKeyboard mCurKeyboard;
-    private LatinKeyboard qwertyKeyboard;
+    private LatinKeyboard standardKeyboard;
 
-    private int qwertyKeyboardID = R.xml.qwerty;
+    private int standardKeyboardID = R.xml.qwerty;
     /**
      * Main initialization of the input method component. Be sure to call
      * to super class.
@@ -176,7 +176,7 @@ public class PCKeyboard extends InputMethodService
      * is called after creation and any configuration change.
      */
     @Override public void onInitializeInterface() {
-        if (mQwertyKeyboard != null) {
+        if (mStandardKeyboard != null) {
             // Configuration changes can happen after the keyboard gets recreated,
             // so we need to be able to re-build the keyboards if the available
             // space has changed.
@@ -184,7 +184,7 @@ public class PCKeyboard extends InputMethodService
             if (displayWidth == mLastDisplayWidth) return;
             mLastDisplayWidth = displayWidth;
         }
-        mQwertyKeyboard = new LatinKeyboard(this, qwertyKeyboardID);
+        mStandardKeyboard = new LatinKeyboard(this, standardKeyboardID);
         mSymbolsKeyboard = new LatinKeyboard(this, R.xml.symbols);
         mSymbolsShiftedKeyboard = new LatinKeyboard(this, R.xml.symbols2);
     }
@@ -202,7 +202,7 @@ public class PCKeyboard extends InputMethodService
                 R.layout.keyboard, null);
         mInputView.setOnKeyboardActionListener(this);
         mInputView.setPreviewEnabled(false);
-        setLatinKeyboard(mQwertyKeyboard);
+        setLatinKeyboard(mStandardKeyboard);
         return mInputView;
     }
 
@@ -262,7 +262,7 @@ public class PCKeyboard extends InputMethodService
         else {
             kv = (CustomKeyboard) getLayoutInflater().inflate(R.layout.keyboard, null);
         }
-        setQwertyKeyboard();
+        setStandardKeyboard();
         setInputType();
         Paint mPaint = new Paint();
         ColorMatrixColorFilter filterInvert = new ColorMatrixColorFilter(mDefaultFilter);
@@ -307,7 +307,7 @@ public class PCKeyboard extends InputMethodService
         // its window.
         setCandidatesViewShown(false);
 
-        mCurKeyboard = mQwertyKeyboard;
+        mCurKeyboard = mStandardKeyboard;
         if (mInputView != null) {
             mInputView.closing();
         }
@@ -431,7 +431,7 @@ public class PCKeyboard extends InputMethodService
      */
     private void updateShiftKeyState(EditorInfo attr) {
         if (attr != null
-                && mInputView != null && mQwertyKeyboard == mInputView.getKeyboard()) {
+                && mInputView != null && mStandardKeyboard == mInputView.getKeyboard()) {
             int caps = 0;
             EditorInfo ei = getCurrentInputEditorInfo();
             if (ei != null && ei.inputType != InputType.TYPE_NULL) {
@@ -908,7 +908,7 @@ public class PCKeyboard extends InputMethodService
     private void setInputType() {
 
         /** Checks the preferences for the default keyboard layout.
-         * If qwerty, we start out whether in qwerty or numbers, depending on the input type.
+         * If standard, we start out whether in standard or numbers, depending on the input type.
          * */
 
         EditorInfo attribute = getCurrentInputEditorInfo();
@@ -927,15 +927,15 @@ public class PCKeyboard extends InputMethodService
                             webInputType == InputType.TYPE_TEXT_VARIATION_WEB_EDIT_TEXT ||
                             webInputType == InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
                             || webInputType == InputType.TYPE_TEXT_VARIATION_WEB_EMAIL_ADDRESS) {
-                        currentKeyboard = new LatinKeyboard(this, qwertyKeyboardID);
+                        currentKeyboard = new LatinKeyboard(this, standardKeyboardID);
                     } else {
-                        currentKeyboard = new LatinKeyboard(this, qwertyKeyboardID);
+                        currentKeyboard = new LatinKeyboard(this, standardKeyboardID);
                     }
 
                     break;
 
                 default:
-                    currentKeyboard = new LatinKeyboard(this, qwertyKeyboardID);
+                    currentKeyboard = new LatinKeyboard(this, standardKeyboardID);
                     break;
             }
         } else {
@@ -948,7 +948,7 @@ public class PCKeyboard extends InputMethodService
     public void setDefaultKeyboard() {
         switch (PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("start", "1")) {
             case "1":
-                currentKeyboard = qwertyKeyboard;
+                currentKeyboard = standardKeyboard;
                 break;
             case "2":
                 currentKeyboard = new LatinKeyboard(this, R.xml.arrow_keys);
@@ -1074,7 +1074,7 @@ public class PCKeyboard extends InputMethodService
                 break;
             case Keyboard.KEYCODE_MODE_CHANGE:
 
-                /** Switch between qwerty/symbols layout. */
+                /** Switch between standard/symbols layout. */
 
                 if (!isSysmbols) {
                     isSysmbols = !isSysmbols;
@@ -1082,7 +1082,7 @@ public class PCKeyboard extends InputMethodService
                     kv.setKeyboard(currentKeyboard);
                 } else {
                     isSysmbols = false;
-                    currentKeyboard = new LatinKeyboard(this, qwertyKeyboardID);
+                    currentKeyboard = new LatinKeyboard(this, standardKeyboardID);
                     kv.setKeyboard(currentKeyboard);
                 }
                 kv.getLatinKeyboard().changeKeyHeight(getHeightKeyModifier());
@@ -1091,13 +1091,13 @@ public class PCKeyboard extends InputMethodService
             case LatinKeyboard.KEYCODE_LAYUOUT_SWITCH:
 
                 /** Language Switch is a custom value defined in the LatinKeyboard class.
-                 * We use it to switch between qwerty/arrow keys/programming layouts. */
+                 * We use it to switch between standard/arrow keys/programming layouts. */
 
                 if (isDpad || isProgramming) {
                     if (isProgramming) {
-                        currentKeyboard = new LatinKeyboard(this, qwertyKeyboardID);
+                        currentKeyboard = new LatinKeyboard(this, standardKeyboardID);
                         kv.invalidateAllKeys();
-                        currentKeyboard.setRowNumber(getQwertyRowNumber());
+                        currentKeyboard.setRowNumber(getStandardRowNumber());
                         kv.setKeyboard(currentKeyboard);
                         isProgramming = false;
                         isDpad = false;
@@ -1184,12 +1184,12 @@ public class PCKeyboard extends InputMethodService
                     kv.draw(new Canvas());
                 }
                 break;
-            case LatinKeyboard.KEYCODE_QWERTY_SWITCH:
+            case LatinKeyboard.KEYCODE_STANDARD_SWITCH:
 
-                /** This key enables the user to switch rapidly between qwerty/arrow keys layouts.*/
+                /** This key enables the user to switch rapidly between standard/arrow keys layouts.*/
 
-                currentKeyboard = new LatinKeyboard(getBaseContext(), qwertyKeyboardID);
-                currentKeyboard.setRowNumber(getQwertyRowNumber());
+                currentKeyboard = new LatinKeyboard(getBaseContext(), standardKeyboardID);
+                currentKeyboard.setRowNumber(getStandardRowNumber());
                 kv.setKeyboard(currentKeyboard);
                 kv.getLatinKeyboard().changeKeyHeight(getHeightKeyModifier());
                 isDpad = false;
@@ -1263,7 +1263,7 @@ public class PCKeyboard extends InputMethodService
 
         rowNumber = (short) number;
     }
-    public short getQwertyRowNumber(){
+    public short getStandardRowNumber(){
 
         if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("arr_qrt", false) && PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("nbr_qrt", false)){
             return 5;
@@ -1281,22 +1281,49 @@ public class PCKeyboard extends InputMethodService
         }
 
     }
-    public void setQwertyKeyboard(){
+    public void setStandardKeyboard(){
+
+        int layout = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("layout", "1"));
+
         if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("arr_qrt", false) && PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("nbr_qrt", false)){
-            qwertyKeyboardID = R.xml.qwerty_arrow_numbers;
+            switch (layout) {
+                case 2:
+                    standardKeyboardID = R.xml.azerty_arrow_numbers;
+                    break;
+                default:
+                    standardKeyboardID = R.xml.qwerty_arrow_numbers;
+            }
             setRowNumber(5);
         }
         else{
             if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("arr_qrt", false)){
-                qwertyKeyboardID = R.xml.qwerty_arrows;
+                switch (layout) {
+                    case 2:
+                        standardKeyboardID = R.xml.azerty_arrows;
+                        break;
+                    default:
+                        standardKeyboardID = R.xml.qwerty_arrows;
+                }
                 setRowNumber(4);
             }
             else if(PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean("nbr_qrt", false)){
-                qwertyKeyboardID = R.xml.qwerty_numbers;
+                switch (layout) {
+                    case 2:
+                        standardKeyboardID = R.xml.azerty_numbers;
+                        break;
+                    default:
+                        standardKeyboardID = R.xml.qwerty_numbers;
+                }
                 setRowNumber(5);
             }
             else {
-                qwertyKeyboardID = R.xml.qwerty;
+                switch (layout) {
+                    case 2:
+                        standardKeyboardID = R.xml.azerty;
+                        break;
+                    default:
+                        standardKeyboardID = R.xml.qwerty;
+                }
                 setRowNumber(4);
             }
         }
