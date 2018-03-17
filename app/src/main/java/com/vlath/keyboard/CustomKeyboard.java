@@ -31,6 +31,10 @@ import java.util.List;
 
 public class CustomKeyboard extends KeyboardView {
 
+    Drawable mTransparent = new ColorDrawable(Color.TRANSPARENT);
+    NinePatchDrawable mSpaceBackground = (NinePatchDrawable) getContext().getResources().getDrawable(R.drawable.space);
+    NinePatchDrawable mPressedBackground = (NinePatchDrawable) getContext().getResources().getDrawable(R.drawable.press);
+    Paint mPaint = new Paint();
 
     public CustomKeyboard(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -41,116 +45,61 @@ public class CustomKeyboard extends KeyboardView {
         super(context, attrs, defStyle);
     }
 
+    public LatinKeyboard getLatinKeyboard(){
+        return (LatinKeyboard)getKeyboard();
+    }
+
     @Override
     protected boolean onLongPress(Key key) {
         if (key.codes[0] == Keyboard.KEYCODE_CANCEL) {
             getOnKeyboardActionListener().onKey(LatinKeyboard.KEYCODE_OPTIONS, null);
             return true;
         }
-        if(key.codes[0] == -113) {
-            Variables.setCtrlOn();
-            draw(new Canvas());
-            return true;
-        }
-        if(key.codes[0] == -114) {
-            Variables.setAltOn();
-            draw(new Canvas());
-            return true;
-        }
-
         return super.onLongPress(key);
     }
-
-
-
-    void setSubtypeOnSpaceKey(final InputMethodSubtype subtype) {
-        final LatinKeyboard keyboard = (LatinKeyboard)getKeyboard();
-        //keyboard.setSpaceIcon(getResources().getDrawable(subtype.getIconResId()));
-        invalidateAllKeys();
-    }
-
-
 
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Paint paint = new Paint();
-        paint.setTextAlign(Paint.Align.CENTER);
-        paint.setTextSize(28);
-        paint.setColor(Color.parseColor("#a5a7aa"));
-
-
+        mPaint.setTextAlign(Paint.Align.CENTER);
+        mPaint.setTextSize(28);
+        mPaint.setColor(Color.parseColor("#a5a7aa"));
 
         List<Key> keys = getKeyboard().getKeys();
+
         for(Key key: keys) {
 
             if(key.label != null) {
-                if (key.label.equals("SPACE")) {
-                    NinePatchDrawable npd = (NinePatchDrawable) getContext().getResources().getDrawable(R.drawable.space);
-                    npd.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
-                    npd.draw(canvas);
-                    //     canvas.drawText("1", key.x + (key.width - 25), key.y + 40, paint);
+                if (key.codes[0] == 32) {
+                    mSpaceBackground.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
+                    mSpaceBackground.draw(canvas);
                 }
                 if (Variables.isAnyOn()) {
                     if (Variables.isCtrl()) {
                         if (key.codes[0] == -113) {
-                            NinePatchDrawable npd = (NinePatchDrawable) getContext().getResources().getDrawable(R.drawable.press);
-                            npd.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
-                            npd.draw(canvas);
+                            mPressedBackground.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
+                            mPressedBackground.draw(canvas);
                         }
                     }
                     if (Variables.isAlt()){
                         if (key.codes[0] == -114) {
-                            NinePatchDrawable npd = (NinePatchDrawable) getContext().getResources().getDrawable(R.drawable.press);
-                            npd.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
-                            npd.draw(canvas);
+                            mPressedBackground.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
+                            mPressedBackground.draw(canvas);
                         }
                     }
 
                 }
                 else{
                     if(key.codes[0] == -113) {
-                        Drawable npd = new ColorDrawable(Color.TRANSPARENT);
-                        npd.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
-                        npd.draw(canvas);
+                        mTransparent.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
+                        mTransparent.draw(canvas);
                     }
                     if(key.codes[0] == -114) {
-                        Drawable npd = new ColorDrawable(Color.TRANSPARENT);
-                        npd.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
-                        npd.draw(canvas);
+                        mTransparent.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
+                        mTransparent.draw(canvas);
                     }
                 }
             }
         }
     }
-   public LatinKeyboard getLatinKeyboard(){
-
-        return (LatinKeyboard)getKeyboard();
-
-   }
-   public PopupWindow getPreview(){
-       try {
-           Field field = KeyboardView.class.getDeclaredField("mPreviewPopup");
-           field.setAccessible(true);
-           Object value = field.get(this);
-           field.setAccessible(false);
-
-           if (value == null) {
-               return null;
-           } else if (KeyboardView.class.isAssignableFrom(value.getClass())) {
-               return (PopupWindow) value;
-           }
-           throw new RuntimeException("Wrong value");
-       } catch (NoSuchFieldException e) {
-           throw new RuntimeException(e);
-       } catch (IllegalAccessException e) {
-           throw new RuntimeException(e);
-       }
-   }
-
-   public void setPopupTheme(ColorMatrixColorFilter filter){
-       Paint p = new Paint();
-       p.setColorFilter(filter);
-       getPreview().getContentView().setLayerType(LAYER_TYPE_HARDWARE, p);
-   }
 }

@@ -313,11 +313,6 @@ public class PCKeyboard extends InputMethodService
         }
     }
 
-    @Override
-    public void onCurrentInputMethodSubtypeChanged(InputMethodSubtype subtype) {
-        mInputView.setSubtypeOnSpaceKey(subtype);
-    }
-
     /**
      * Deal with the editor reporting movement of its cursor.
      */
