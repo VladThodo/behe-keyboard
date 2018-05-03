@@ -12,13 +12,13 @@
         <Key android:codes="114" android:keyLabel="r" android:popupKeyboard="@xml/popup_template" android:popupCharacters="ŕɍřŗṙ"/>
         <Key android:codes="116" android:keyLabel="t" android:popupKeyboard="@xml/popup_template" android:popupCharacters="ťṫţṭțṱṯ"/>
         <Key android:codes="121" android:keyLabel="z" android:popupKeyboard="@xml/popup_template" android:popupCharacters="ýỳŷÿỹ" />
-        <Key android:codes="117" android:keyLabel="u" android:popupKeyboard="@xml/popup_template" android:popupCharacters="ŭʉụüǜ"/>
+        <Key android:codes="117" android:keyLabel="u" android:popupKeyboard="@xml/popup_template" android:popupCharacters="ŭʉụǜü"/>
         <Key android:codes="105" android:keyLabel="i" android:popupKeyboard="@xml/popup_template" android:popupCharacters="íìĭîǐï"/>
-        <Key android:codes="111" android:keyLabel="o" android:popupKeyboard="@xml/popup_template" android:popupCharacters="øǿöȫóò" />
+        <Key android:codes="111" android:keyLabel="o" android:popupKeyboard="@xml/popup_template" android:popupCharacters="øǿȫóòö" />
         <Key android:codes="112" android:keyLabel="p" android:keyEdgeFlags="right" android:popupKeyboard="@xml/popup_template" android:popupCharacters="ṕṗᵽ"/>
     </Row>
     <Row>
-        <Key android:codes="97" android:keyLabel="a" android:popupKeyboard="@xml/popup_template"  android:popupCharacters="áăäâ" android:keyEdgeFlags="left"  android:horizontalGap="5%p"/>
+        <Key android:codes="97" android:keyLabel="a" android:popupKeyboard="@xml/popup_template"  android:popupCharacters="áăâä" android:keyEdgeFlags="left"  android:horizontalGap="5%p"/>
         <Key android:codes="115" android:keyLabel="s" android:popupCharacters="śṥŝšṧṡş" android:popupKeyboard="@xml/popup_template"/>
         <Key android:codes="100" android:keyLabel="d" android:popupKeyboard="@xml/popup_template" android:popupCharacters="đɗḋḍḑḓ"/>
         <Key android:codes="102" android:keyLabel="f" android:popupKeyboard="@xml/popup_template" android:popupCharacters="ƒḟ" />
