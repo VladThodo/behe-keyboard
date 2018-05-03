@@ -1285,6 +1285,9 @@ public class PCKeyboard extends InputMethodService
                 case 2:
                     standardKeyboardID = R.xml.azerty_arrow_numbers;
                     break;
+                case 3:
+                    standardKeyboardID = R.xml.qwertz_arrow_numbers;
+                    break;
                 default:
                     standardKeyboardID = R.xml.qwerty_arrow_numbers;
             }
@@ -1296,6 +1299,9 @@ public class PCKeyboard extends InputMethodService
                     case 2:
                         standardKeyboardID = R.xml.azerty_arrows;
                         break;
+                    case 3:
+                        standardKeyboardID = R.xml.qwertz_arrows;
+                        break;
                     default:
                         standardKeyboardID = R.xml.qwerty_arrows;
                 }
@@ -1306,6 +1312,9 @@ public class PCKeyboard extends InputMethodService
                     case 2:
                         standardKeyboardID = R.xml.azerty_numbers;
                         break;
+                    case 3:
+                        standardKeyboardID = R.xml.qwertz_numbers;
+                        break;
                     default:
                         standardKeyboardID = R.xml.qwerty_numbers;
                 }
@@ -1315,6 +1324,9 @@ public class PCKeyboard extends InputMethodService
                 switch (layout) {
                     case 2:
                         standardKeyboardID = R.xml.azerty;
+                        break;
+                    case 3:
+                        standardKeyboardID = R.xml.qwertz;
                         break;
                     default:
                         standardKeyboardID = R.xml.qwerty;
