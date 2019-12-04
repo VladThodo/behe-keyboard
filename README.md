@@ -23,7 +23,7 @@ Also, BeHe Keyboard does not spy on you and is easy to use. Check it out!
 
 ## License
  
- Copyright 2017 Vlad Todosin
+ Copyright 2017 - 2019 Vlad Todosin
  
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
