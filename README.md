@@ -1,4 +1,5 @@
-[![Travis](https://img.shields.io/travis/VladThodo/behe-keyboard.svg?style=flat-square)]()
+[![Travis](https://img.shields.io/travis/VladThodo/behe-keyboard/master?label=master&style=flat-square)]()
+[![Travis](https://img.shields.io/travis/VladThodo/behe-keyboard/dev?label=dev&style=flat-square)]()
 [![Quality Score](https://img.shields.io/scrutinizer/g/VladThodo/behe-keyboard.svg?style=flat-square)]()
 [![license](https://img.shields.io/github/license/VladThodo/behe-keyboard.svg?style=flat-square)]()
 [![GitHub release](https://img.shields.io/github/release/VladThodo/behe-keyboard.svg?style=flat-square)]()
