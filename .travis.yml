@@ -7,8 +7,8 @@ android:
   components:
     - tools
 
-    - build-tools-26.0.0
-    - android-26
+    - build-tools-29.0.0
+    - android-29
     - extra-android-support
     - extra-android-m2repository
   licenses:
@@ -24,3 +24,9 @@ before_install:
 script:
   
 - ./gradlew build check
+
+branches:
+  only:
+  - master
+  - dev
+
