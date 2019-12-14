@@ -1,0 +1,13 @@
+name: Greetings
+
+on: [pull_request, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: 'Hi there and thanks for reporting the issue! I''ll analize it as soon as I can and try to fix it. This is an automated message, I always read all of the issues, though I may not respond all the times. Thanks for using my app!'
+        pr-message: 'Hi there! Thanks for your fisrt contribution on my project. If everything''s alright, I''ll merge it as soon as I can.'
