@@ -668,24 +668,5 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
     // Layout language name on spacebar.
 
     private void drawLanguageOnSpacebar(final Key key, final Canvas canvas, final Paint paint) {
-        final Keyboard keyboard = getKeyboard();
-        if (keyboard == null) {
-            return;
-        }
-        final int width = key.getWidth();
-        final int height = key.getHeight();
-        paint.setTextAlign(Align.CENTER);
-        paint.setTypeface(Typeface.DEFAULT);
-        paint.setTextSize(mLanguageOnSpacebarTextSize);
-        final String language = "BeHe Keyboard";
-        // Draw language text with shadow
-        final float descent = paint.descent();
-        final float textHeight = -paint.ascent() + descent;
-        final float baseline = height / 2 + textHeight / 2;
-        paint.setColor(Color.WHITE);
-        paint.setAlpha(mLanguageOnSpacebarAnimAlpha);
-        paint.setTextScaleX(1.0f);
-        paint.setTextSize(35);
-        canvas.drawText(language, width / 2, baseline - descent, paint);
     }
 }
