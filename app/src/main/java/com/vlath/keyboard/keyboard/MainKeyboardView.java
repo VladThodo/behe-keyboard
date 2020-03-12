@@ -643,9 +643,8 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         final int code = key.getCode();
         if (code == Constants.CODE_SPACE) {
             // If input language are explicitly selected.
-            if (mLanguageOnSpacebarFormatType != LanguageOnSpacebarUtils.FORMAT_TYPE_NONE) {
-                drawLanguageOnSpacebar(key, canvas, paint);
-            }
+            drawLanguageOnSpacebar(key, canvas, paint);
+
         }
     }
 
@@ -667,23 +666,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
     }
 
     // Layout language name on spacebar.
-    private String layoutLanguageOnSpacebar(final Paint paint,
-            final RichInputMethodSubtype subtype, final int width) {
-        // Choose appropriate language name to fit into the width.
-        if (mLanguageOnSpacebarFormatType == LanguageOnSpacebarUtils.FORMAT_TYPE_FULL_LOCALE) {
-            final String fullText = subtype.getFullDisplayName();
-            if (fitsTextIntoWidth(width, fullText, paint)) {
-                return fullText;
-            }
-        }
-
-        final String middleText = subtype.getMiddleDisplayName();
-        if (fitsTextIntoWidth(width, middleText, paint)) {
-            return middleText;
-        }
-
-        return "";
-    }
 
     private void drawLanguageOnSpacebar(final Key key, final Canvas canvas, final Paint paint) {
         final Keyboard keyboard = getKeyboard();
@@ -695,21 +677,15 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         paint.setTextAlign(Align.CENTER);
         paint.setTypeface(Typeface.DEFAULT);
         paint.setTextSize(mLanguageOnSpacebarTextSize);
-        final String language = layoutLanguageOnSpacebar(paint, keyboard.mId.mSubtype, width);
+        final String language = "BeHe Keyboard";
         // Draw language text with shadow
         final float descent = paint.descent();
         final float textHeight = -paint.ascent() + descent;
         final float baseline = height / 2 + textHeight / 2;
-        if (mLanguageOnSpacebarTextShadowRadius > 0.0f) {
-            paint.setShadowLayer(mLanguageOnSpacebarTextShadowRadius, 0, 0,
-                    mLanguageOnSpacebarTextShadowColor);
-        } else {
-            paint.clearShadowLayer();
-        }
-        paint.setColor(mLanguageOnSpacebarTextColor);
+        paint.setColor(Color.WHITE);
         paint.setAlpha(mLanguageOnSpacebarAnimAlpha);
-        canvas.drawText(language, width / 2, baseline - descent, paint);
-        paint.clearShadowLayer();
         paint.setTextScaleX(1.0f);
+        paint.setTextSize(35);
+        canvas.drawText(language, width / 2, baseline - descent, paint);
     }
 }
