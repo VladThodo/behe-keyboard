@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+**
+** Copyright 2012, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<resources>
+    <!-- Color resources for IceCreamSandwich theme. Base color = 33B5E5 -->
+    <!-- android:color/holo_blue_light value is #FF33B5E5 -->
+    <color name="highlight_translucent_color_ics">#9933B5E5</color>
+    <color name="key_text_color_holo">@android:color/white</color>
+    <color name="key_text_inactivated_color_holo">#66E0E4E5</color>
+    <color name="key_hint_letter_color_holo">#80FFFFFF</color>
+    <color name="key_hint_label_color_holo">#A0FFFFFF</color>
+    <color name="key_shifted_letter_hint_inactivated_color_holo">#66E0E4E5</color>
+    <color name="key_shifted_letter_hint_activated_color_holo">@android:color/white</color>
+    <color name="spacebar_text_color_holo">#FFC0C0C0</color>
+    <color name="spacebar_text_shadow_color_holo">#80000000</color>
+    <color name="highlight_translucent_color_klp">#99E0E0E0</color>
+    <!-- Color resources for LXX_Light theme.
+         15%:0x26 70%:0xB3 75%:0xC0 80%:0xCC 85%:0xD9 90%:0xE6 -->
+    <color name="key_text_color_lxx_light">#37474F</color>
+    <color name="key_functional_text_color_lxx_light">#CC37474F</color>
+    <color name="key_text_inactive_color_lxx_light">#B337474F</color>
+    <color name="key_hint_letter_color_lxx_light">#B337474F</color>
+    <color name="language_on_spacebar_text_color_lxx_light">#B337474F</color>
+    <color name="sliding_key_input_preview_color_lxx_light">#B34DB6AC</color>
+    <color name="key_background_pressed_lxx_light">#2637474F</color>
+    <!-- Color resources for LXX_Dark theme.
+         10%:0x19 50%:0x80 70%:0xB3 75%:0xC0 80%:0xCC 85%:0xD9 90%:0xE6  -->
+    <color name="key_text_color_lxx_dark">#CCFFFFFF</color>
+    <color name="key_functional_text_color_lxx_dark">#CCFFFFFF</color>
+    <color name="key_text_inactive_color_lxx_dark">#80FFFFFF</color>
+    <color name="key_hint_letter_color_lxx_dark">#80FFFFFF</color>
+    <color name="sliding_key_input_preview_color_lxx_dark">#B380CBC4</color>
+    <color name="key_background_pressed_lxx_dark">#19FFFFFF</color>
+
+    <color name="colorPrimary">#424242</color>
+    <color name="colorPrimaryDark">#1b1b1b</color>
+    <color name="colorAccent">#ed7f00</color>
+    <color name="black">@android:color/black</color>
+    <color name="green">#4CAF50</color>
+    <color name="blue">#42A5F5</color>
+    <color name="red">#EF5350</color>
+    <color name="cyan">#26C6DA</color>
+    <color name="teal">#26A69A</color>
+    <color name="amber">#FFC107</color>
+    <color name="lime">#D4E157</color>
+    <color name="purple">#AB47BC</color>
+    <color name="white">#FFFF</color>
+    <color name="gray">#515151</color>
+    <color name="gray_dark">#292929</color>
+    <color name="text">#a5a7aa</color>
+    <color name="candidate_normal">#FF000000</color>
+    <color name="candidate_recommended">#000000</color>
+    <color name="candidate_other">#ff808080</color>
+    <color name="candidate_background">#bbffffff</color>
+
+    <!-- Screens background color-->
+    <color name="bg_screen1">#009688</color>
+    <color name="bg_screen2">#00bcd4</color>
+    <color name="bg_screen3">#4caf50</color>
+    <color name="bg_screen4">#8bc34a</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#00897b</color>
+    <color name="dot_dark_screen2">#00acc1</color>
+    <color name="dot_dark_screen3">#43a047</color>
+    <color name="dot_dark_screen4">#7cb342</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#26a69a</color>
+    <color name="dot_light_screen2">#26c6da</color>
+    <color name="dot_light_screen3">#66bb6a</color>
+    <color name="dot_light_screen4">#9ccc65</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+    </array>
+</resources>
+

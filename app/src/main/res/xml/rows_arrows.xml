@@ -1,0 +1,51 @@
+<merge
+    xmlns:latin="http://schemas.android.com/apk/res-auto"
+    >
+    <include
+        latin:keyboardLayout="@xml/key_styles_common" />
+    <Row
+        latin:keyWidth="10%p"
+        >
+        <include
+            latin:keyboardLayout="@xml/rowkeys_arrows1" />
+    </Row>
+    <Row
+        latin:keyWidth="10%p"
+        >
+        <include
+            latin:keyboardLayout="@xml/rowkeys_arrows2"
+             />
+    </Row>
+    <Row
+        latin:keyWidth="10%p"
+        >
+        <include
+            latin:keyboardLayout="@xml/rowkeys_arrows3" />
+    </Row>
+    <Row
+        latin:keyWidth="10%p"
+        latin:backgroundType="functional"
+        >
+        <Key
+            latin:keySpec="ABC|!code/key_alpha"
+            latin:keyWidth="15%p" />
+        <Key
+            latin:keySpec="!icon/more_switch|!code/key_arrows"
+            latin:keyActionFlags="isRepeatable|noKeyPreview|altCodeWhileTyping"
+            latin:keyWidth="10%p" />
+
+        <include
+            latin:keyboardLayout="@xml/key_comma" />
+
+
+        <include
+            latin:keyboardLayout="@xml/key_space_5kw" />
+
+        <include
+            latin:keyboardLayout="@xml/key_period" />
+
+        <Key
+            latin:keyStyle="enterKeyStyle"
+            latin:keyWidth="fillRight" />
+    </Row>
+</merge>

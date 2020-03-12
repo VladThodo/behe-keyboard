@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:latin="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+       <Key latin:keySpec="CTRL|!code/key_ctrl"
+            latin:keyActionFlags="noKeyPreview|altCodeWhileTyping"
+            latin:altCode="!code/key_ctrl"
+            latin:keyWidth="20%p"
+            latin:keyTypeface="bold"/>
+
+    <Key latin:keySpec="ALT|!code/key_alt"
+        latin:keyActionFlags="noKeyPreview|altCodeWhileTyping"
+        latin:altCode="!code/key_alt"
+        latin:keyWidth="20%p"
+        latin:keyTypeface="bold"/>
+
+    <Key latin:keySpec="!icon/arrow_down|!code/key_down" latin:keyActionFlags="isRepeatable|noKeyPreview" latin:keyWidth="20%p"/>
+    <Key latin:keySpec="TAB"  latin:keyWidth="20%p" latin:keyTypeface="bold"/>
+    <Key latin:keySpec="DEL" latin:keyWidth="20%p" latin:keyTypeface="bold"/>
+
+
+</merge>

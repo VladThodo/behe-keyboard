@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <resources>
+        <!-- Base application theme. -->
+        <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+            <!-- Customize your theme here. -->
+            <item name="colorPrimary">@color/colorPrimary</item>
+            <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+            <item name="colorAccent">@color/colorAccent</item>
+            <item name="preferenceTheme">@style/PreferencesTheme</item>
+            <item name="aboutCardBackground">@color/colorPrimaryDark</item>
+        </style>
+
+    <style name="PreferencesTheme" parent="@style/PreferenceThemeOverlay.v14.Material">
+        <item name="android:background">@color/gray</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:divider">@android:color/transparent</item>
+    </style>
+
+        <style name="AppTheme.AppBarOverlay" parent="Theme.AppCompat.Light.DarkActionBar">
+
+            <item name="colorPrimary">@color/colorPrimary</item>
+            <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+            <item name="colorAccent">@color/colorAccent</item>
+
+        </style>
+
+        <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    </resources>
