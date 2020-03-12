@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge  xmlns:latin="http://schemas.android.com/apk/res-auto">
+
+    <Key latin:keySpec="F1" latin:keyTypeface="bold"/>
+    <Key  latin:keySpec="F2" latin:keyTypeface="bold"/>
+    <Key  latin:keySpec="F3" latin:keyTypeface="bold"/>
+    <Key  latin:keySpec="F4" latin:keyTypeface="bold"/>
+    <Key  latin:keySpec="!icon/arrow_up|!code/key_up"  latin:keyActionFlags="isRepeatable|noKeyPreview" latin:keyWidth="20%p"/>
+    <Key  latin:keySpec="F5" latin:keyTypeface="bold"/>
+    <Key  latin:keySpec="F6" latin:keyTypeface="bold"/>
+    <Key  latin:keySpec="F7" latin:keyTypeface="bold"/>
+    <Key  latin:keySpec="F8" latin:keyTypeface="bold"/>
+
+</merge>

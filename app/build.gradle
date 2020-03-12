@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        applicationId "com.vlath.keyboard"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 41
+        versionName "2.16"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+def AAVersion = "4.6.0"
+dependencies {
+
+    annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
+    implementation "org.androidannotations:androidannotations-api:$AAVersion"
+    implementation 'com.getkeepsafe.taptargetview:taptargetview:1.12.0', {
+        exclude group: 'com.android.support'
+    }
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.preference:preference:1.1.0'
+    implementation 'com.github.marcoscgdev:EasyAbout:1.0.6'
+    implementation 'androidx.navigation:navigation-fragment:2.3.0-alpha03'
+    implementation 'androidx.navigation:navigation-ui:2.3.0-alpha03'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
+    implementation 'com.github.medyo:fancybuttons:1.9.1'
+}
