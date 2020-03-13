@@ -1,3 +1,9 @@
+/*
+ * Copyright (C) 2020 Vlad Todosin
+ *
+ * Licensed under the Apache License 2.0
+ * */
+
 package com.vlath.keyboard.setup;
 
 /* This kinda sucks tho*/
@@ -5,6 +11,7 @@ package com.vlath.keyboard.setup;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.provider.Settings;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,9 +30,6 @@ import androidx.navigation.ui.NavigationUI;
 @EActivity(R.layout.activate)
 public class Main extends AppCompatActivity {
 
-    @ViewById(R.id.toolbar_top)
-    Toolbar mBar;
-
     @ViewById(R.id.bttm_nav)
     BottomNavigationView mNavigationView;
 
@@ -34,19 +38,12 @@ public class Main extends AppCompatActivity {
 
     @AfterViews
     void viewsInit(){
-        mBar.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(mBar);
-        setTitle("BeHe Keyboard");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimaryDark)));
         NavigationUI.setupWithNavController(mNavigationView, mNavHost.getNavController());
     }
 
     public void select(View v){
-        InputMethodManager imeManager = (InputMethodManager) getApplicationContext().getSystemService(INPUT_METHOD_SERVICE);
-        if (imeManager != null) {
-            imeManager.showInputMethodPicker();
-        } else {
-            Toast.makeText(this, "Not possible" , Toast.LENGTH_LONG).show();
-        }
+
     }
 
     public void enable(View v){

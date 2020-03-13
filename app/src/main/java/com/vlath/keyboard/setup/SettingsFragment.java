@@ -16,7 +16,12 @@ import com.vlath.keyboard.latin.AudioAndHapticFeedbackManager;
 import com.vlath.keyboard.latin.RichInputMethodManager;
 import com.vlath.keyboard.latin.settings.Settings;
 
+import org.androidannotations.annotations.EFragment;
+
+@org.androidannotations.annotations.PreferenceScreen(R.xml.prefs)
+@EFragment
 public class SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
+
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
