@@ -1,0 +1,26 @@
+language: android
+sudo: required
+dist: trusty
+group: deprecated-2017Q4
+
+android:
+  components:
+    - tools
+
+    - build-tools-28.0.0
+    - android-28
+    - extra-android-support
+    - extra-android-m2repository
+  licenses:
+    - 'android-sdk-license-.+'
+    - '.*intel.+'
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
+before_install:
+  - chmod +x gradlew
+  - git submodule update --init --recursive
+script:
+  
+- ./gradlew build check
