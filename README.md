@@ -17,6 +17,8 @@ BeHe Keyboard aims to provide a smooth and simple keyboard experience, while als
 
 Also, BeHe Keyboard does not spy on you and is easy to use. Check it out!
 
+Join our slack channel: https://join.slack.com/t/avtdev/shared_invite/zt-cm020oz6-lY7HIFIn2a18Cx~J5RM9YA
+
 
 <a href="https://f-droid.org/packages/com.vlath.keyboard/" target="_blank">
 <img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="90"/></a>
