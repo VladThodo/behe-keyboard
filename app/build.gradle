@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 def AAVersion = "4.6.0"
 dependencies {
@@ -36,4 +40,5 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
     implementation 'com.github.medyo:fancybuttons:1.9.1'
+    implementation 'com.google.android.play:core:1.7.0'
 }

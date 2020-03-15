@@ -39,4 +39,7 @@
     <Element
         latin:elementKeyboard="@xml/kbd_number"
         latin:elementName="number" />
+    <Element
+        latin:elementName="arrowKeys"
+        latin:elementKeyboard="@xml/kbd_arrows" />
 </KeyboardLayoutSet>

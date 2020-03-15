@@ -345,7 +345,8 @@ public final class KeyboardState {
             onPressSymbol(autoCapsFlags, recapitalizeMode);
 
         } else if (code == Constants.CODE_ARROW_SWITCH) {
-                onSetArrows(autoCapsFlags, recapitalizeMode);
+                Log.d("MEE", "I've been called");
+            onSetArrows(autoCapsFlags, recapitalizeMode);
         } else  if (code == Constants.CODE_TO_ALPHA) {
                 setAlphabetKeyboard(autoCapsFlags, recapitalizeMode);
         } else{

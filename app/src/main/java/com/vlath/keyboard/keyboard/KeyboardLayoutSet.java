@@ -194,6 +194,7 @@ public final class KeyboardLayoutSet {
         sUniqueKeysCache.setEnabled(id.isAlphabetKeyboard());
         builder.setAllowRedundantMoreKes(elementParams.mAllowRedundantMoreKeys);
         final int keyboardXmlId = elementParams.mKeyboardXmlId;
+        Log.d("ID", String.valueOf(keyboardXmlId));
         builder.load(keyboardXmlId, id);
         final Keyboard keyboard = builder.build();
         sKeyboardCache.put(id, new SoftReference<>(keyboard));

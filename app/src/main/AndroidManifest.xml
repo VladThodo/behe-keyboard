@@ -38,7 +38,7 @@
 
         <activity android:name="com.vlath.keyboard.setup.Main_"
             android:label="BeHe Keyboard"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme.Launcher"
             >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
@@ -54,6 +54,7 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+        <activity android:name=".setup.SettingsActivity_" android:theme="@style/AppTheme"/>
 
         <!-- Broadcast receivers -->
         <receiver android:name=".latin.SystemBroadcastReceiver">

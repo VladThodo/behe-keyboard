@@ -42,6 +42,7 @@ import com.vlath.keyboard.keyboard.KeyboardId;
 import com.vlath.keyboard.keyboard.KeyboardTheme;
 import com.vlath.keyboard.latin.common.Constants;
 import com.vlath.keyboard.latin.common.StringUtils;
+import com.vlath.keyboard.latin.utils.LeakGuardHandlerWrapper;
 import com.vlath.keyboard.latin.utils.ResourceUtils;
 import com.vlath.keyboard.latin.utils.XmlParseUtils;
 import com.vlath.keyboard.latin.utils.XmlParseUtils.ParseException;
@@ -301,6 +302,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                     parseKeyStyle(parser, skip);
                 } else {
                     throw new XmlParseUtils.IllegalStartTag(parser, tag, TAG_ROW);
+
                 }
             } else if (event == XmlPullParser.END_TAG) {
                 final String tag = parser.getName();

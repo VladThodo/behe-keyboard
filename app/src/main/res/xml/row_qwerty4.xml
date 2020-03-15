@@ -23,7 +23,7 @@
 >
         <include
             latin:keyboardLayout="@xml/key_styles_common" />
-
+<Row>
         <Key
             latin:keyStyle="toSymbolKeyStyle"
             latin:keyWidth="15%p" />
@@ -46,4 +46,5 @@
         <Key
             latin:keyStyle="enterKeyStyle"
             latin:keyWidth="fillRight" />
+</Row>
 </merge>

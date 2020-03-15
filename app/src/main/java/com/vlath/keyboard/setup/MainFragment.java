@@ -13,6 +13,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import com.vlath.keyboard.R;
+import com.vlath.keyboard.latin.settings.InputMethodSettingsActivity;
+
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 
@@ -22,24 +24,22 @@ import org.androidannotations.annotations.EFragment;
 public class MainFragment extends Fragment {
 
     @Click(R.id.select)
-    void mSelectButton(){
-        Context mContext = null;
-        try { mContext = getActivity().getApplicationContext(); }
-        catch(Exception e) {  Log.e("NULL", "Context is null"); }
-        if(mContext != null) {
-            InputMethodManager imeManager = (InputMethodManager)
-                    getActivity().getApplicationContext().
-                            getSystemService(Activity.INPUT_METHOD_SERVICE);
-            if (imeManager != null) {
-                imeManager.showInputMethodPicker();
-            } else {
-                Toast.makeText(getActivity(), "Not possible", Toast.LENGTH_LONG).show();
-            }
+    void mSelectButton() {
+        InputMethodManager imeManager = null;
+        try {
+            imeManager = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        } catch (Exception e) {
+            Log.e("Error", "NullPointer");
+        }
+        if (imeManager != null) {
+            imeManager.showInputMethodPicker();
+        } else {
+            Toast.makeText(getActivity(), "Not possible", Toast.LENGTH_LONG).show();
         }
     }
 
     @Click(R.id.enable)
     void mEnableButton(){
-        this.startActivity(new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS));
+        this.startActivity(new Intent(getActivity(), SettingsActivity_.class));
     }
 }
